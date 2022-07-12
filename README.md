@@ -14,10 +14,9 @@ OS : Android, iOS
 
 Language : Dart
 
-IDE : Android Studio flutter
+IDE : Android Studio
 
 Target Device : Galaxy S10
-
 
 Framework : Flutter
 
