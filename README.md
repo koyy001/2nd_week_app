@@ -22,7 +22,7 @@ Framework : Flutter
 
 Backend: Node.js + express
 
-Database: MariaDB(MySQL)
+Database: MySQL
 
 ## Description
 이 앱은 카이스트의 대표 마스코트인 넙죽이를 키우는 게임이다. 행동의 선택에 따라 넙죽이를 키우는데 성공할 수도, 실패할 수도 있다.
@@ -30,7 +30,9 @@ Database: MariaDB(MySQL)
 ## Implementation Method
 1. 탭 전환 – navigator의 push, pop을 이용한 route간의 화면전환
 
-2. data 저장 및 전달 – 서버
+2. data 저장 및 전달
+  * data 전달 : http 프로토콜을 통해 client와 server 통신
+  * data 저장 : [user_id, user_pw, new_user, _name, _full, _smart, _stress, _level] 정보 저장
 
 ## Usage
 ### tab1 – login page                   
@@ -39,7 +41,7 @@ Database: MariaDB(MySQL)
 |---|---|---|
 |테스트1|테스트2|테스트3|
 
-* 계정이 등록되어있지 않은 경우 : 회원가입을 통해 새 계정을 등록할 수 있고, 이때 키울 넙죽이의 이름을 정할 수 있다. 
+* 계정이 등록되어있지 않은 경우 : 회원가입을 통해 새 계정을 등록할 수 있고, 이때 키울 넙죽이의 이름을 정할 수 있다. 이미 가입된 회원은 새로운 회원가입이 불가능하다.
 * 계정이 등록되어 있는 경우 : 로그인을 통해 해당 계정의 데이터들에 접근할 수 있다. 이때 비밀번호나 아이디가 틀리면 접근하지 못한다.
 
 ### tab2.1 – 넙죽이 키우기 page                   
