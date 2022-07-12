@@ -37,9 +37,9 @@ Database: MySQL
 ## Usage
 ### tab1 – login page                   
 
-|첫 화면|회원가입 화면|로그인 화면|
+|첫 화면|회원가입 화면|이름생성 화면|
 |---|---|---|
-|테스트1|테스트2|테스트3|
+|![KakaoTalk_20220712_200941007_01](https://user-images.githubusercontent.com/91946706/178479150-4b1846f9-6864-445f-9408-9048a335d746.jpg)|![KakaoTalk_20220712_200941007_03](https://user-images.githubusercontent.com/91946706/178479393-5d21871d-bbac-4ed0-90ef-0765366009bc.jpg)|![KakaoTalk_20220712_200941007_04](https://user-images.githubusercontent.com/91946706/178479236-2639e61a-ea81-47cf-8c9b-e9e7c0898ccd.jpg)|
 
 * 계정이 등록되어있지 않은 경우 : 회원가입을 통해 새 계정을 등록할 수 있고, 이때 키울 넙죽이의 이름을 정할 수 있다. 이미 가입된 회원은 새로운 회원가입이 불가능하다.
 * 계정이 등록되어 있는 경우 : 로그인을 통해 해당 계정의 데이터들에 접근할 수 있다. 이때 비밀번호나 아이디가 틀리면 접근하지 못한다.
@@ -48,16 +48,15 @@ Database: MySQL
 
 |첫 화면|밥먹기|공부하기|잠자기|
 |---|---|---|---|
-|테스트1|테스트2|테스트3|테스트4|
+|![KakaoTalk_20220712_200941007_05](https://user-images.githubusercontent.com/91946706/178479450-6f6ad06d-9104-4be8-9e46-5021fabaeb4d.jpg)|![KakaoTalk_20220712_200941007_07](https://user-images.githubusercontent.com/91946706/178479500-f8b345c1-3534-4280-bffb-38032ebff9d2.jpg)|![KakaoTalk_20220712_200941007_08](https://user-images.githubusercontent.com/91946706/178479543-ee3747c7-49be-4cc1-acbb-705429610b8f.jpg)|![KakaoTalk_20220712_200941007_09](https://user-images.githubusercontent.com/91946706/178479562-9af4b74e-7ff7-472e-903b-c6cacd1fde96.jpg)|
 
 |1 lv|2 lv|3 lv|
 |---|---|---|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
+|![KakaoTalk_20220712_200941007_05](https://user-images.githubusercontent.com/91946706/178479593-db57ec18-28bb-4379-9a24-966bf6f478df.jpg)|![KakaoTalk_20220712_200941007_10](https://user-images.githubusercontent.com/91946706/178479656-f191605e-4e61-473c-86c9-cef599cf5a09.jpg)|![KakaoTalk_20220712_200941007_11](https://user-images.githubusercontent.com/91946706/178479699-65a93c4e-6c6c-46cc-aff7-2bcf9689b4b1.jpg)|
 
 |키우기 실패|키우기 성공|
 |---|---|
-|테스트1|테스트2|
+|![KakaoTalk_20220712_200941007_16](https://user-images.githubusercontent.com/91946706/178479778-05433131-bae3-4bf0-967d-a527232d8fd2.jpg)|![KakaoTalk_20220712_200941007_13](https://user-images.githubusercontent.com/91946706/178479735-8fa99655-40bf-43df-9acb-6455af946a55.jpg)|
 
 넙죽이의 성장레벨은 총 3단계로, 모든 레벨을 달성하면 직접 키운 넙죽이가 카이스트에 입학하는 결말을 볼 수 있다.
 * 넙죽이의 성장에 영향을 끼치는 요소 : 배부름, 지성, 스트레스        
@@ -82,7 +81,7 @@ Database: MySQL
 
 |첫 화면|
 |---|
-|테스트1|
+|![KakaoTalk_20220712_200941007](https://user-images.githubusercontent.com/91946706/178478921-9e61cb12-248f-4aa7-89ff-2513a365f4e5.jpg)|
 
 이 페이지에선 저장하기, logout의 기능을 구현하였다. 
 * 저장하기 버튼 : 현재 넙죽이의 상태 및 레벨, 이름에 대한 data들을 서버에 저장하여, 다시 log in하면 저장된 data들을 불러오도록 구현하였다.
