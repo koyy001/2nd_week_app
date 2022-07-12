@@ -68,7 +68,8 @@ Database: MySQL
 
 |첫 화면|주사위 게임|묵찌빠 게임|
 |---|---|---|
-|![KakaoTalk_20220712_200941007_17](https://user-images.githubusercontent.com/91946706/178479899-719e85c3-0a11-480e-8372-843b42e0d06f.jpg)|![KakaoTalk_20220712_200941007_18](https://user-images.githubusercontent.com/91946706/178479978-73fe9ec2-fec4-4632-be3b-7fd6673eff09.jpg)|![KakaoTalk_20220712_200941007_20](https://user-images.githubusercontent.com/91946706/178480021-8bec87f3-a79b-4ebc-8a9e-a38335d76088.jpg)|![KakaoTalk_20220712_200941007_17](https://user-images.githubusercontent.com/91946706/178479899-719e85c3-0a11-480e-8372-843b42e0d06f.jpg)||![KakaoTalk_20220712_200941007_19](https://user-images.githubusercontent.com/91946706/178480044-71381f8e-847d-4ef2-9e3c-3723e684cb09.jpg)|![KakaoTalk_20220712_200941007_21](https://user-images.githubusercontent.com/91946706/178480084-ab08e480-c957-4335-8c5e-1f93b88beb25.jpg)|
+|![KakaoTalk_20220712_200941007_17](https://user-images.githubusercontent.com/91946706/178479899-719e85c3-0a11-480e-8372-843b42e0d06f.jpg)|![KakaoTalk_20220712_200941007_18](https://user-images.githubusercontent.com/91946706/178479978-73fe9ec2-fec4-4632-be3b-7fd6673eff09.jpg)|![KakaoTalk_20220712_200941007_20](https://user-images.githubusercontent.com/91946706/178480021-8bec87f3-a79b-4ebc-8a9e-a38335d76088.jpg)|
+|![KakaoTalk_20220712_200941007_17](https://user-images.githubusercontent.com/91946706/178479899-719e85c3-0a11-480e-8372-843b42e0d06f.jpg)||![KakaoTalk_20220712_200941007_19](https://user-images.githubusercontent.com/91946706/178480044-71381f8e-847d-4ef2-9e3c-3723e684cb09.jpg)|![KakaoTalk_20220712_200941007_21](https://user-images.githubusercontent.com/91946706/178480084-ab08e480-c957-4335-8c5e-1f93b88beb25.jpg)|
 
 이 페이지엔 주사위게임, 묵찌빠게임 이렇게 두가지 게임이 있다.                          
 만약 넙죽이가 지면 넙죽이의 스트레스 지수가 높아지고, 넙죽이가 이기면 스트레스 지수가 낮아진다.                           
