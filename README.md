@@ -54,7 +54,7 @@ Database: MySQL
 |---|---|---|
 |![KakaoTalk_20220712_200941007_05](https://user-images.githubusercontent.com/91946706/178479593-db57ec18-28bb-4379-9a24-966bf6f478df.jpg)|![KakaoTalk_20220712_200941007_10](https://user-images.githubusercontent.com/91946706/178479656-f191605e-4e61-473c-86c9-cef599cf5a09.jpg)|![KakaoTalk_20220712_200941007_11](https://user-images.githubusercontent.com/91946706/178479699-65a93c4e-6c6c-46cc-aff7-2bcf9689b4b1.jpg)|
 
-|키우기 실패 1||키우기 실패 2|키우기 실패 3|키우기 성공|
+|키우기 실패 1|키우기 실패 2|키우기 실패 3|키우기 성공|
 |---|---|---|---|
 |![KakaoTalk_20220712_200941007_14](https://user-images.githubusercontent.com/91946706/178481418-b23db17a-ef79-4af4-90c5-3112842721f7.jpg)|![KakaoTalk_20220712_200941007_15](https://user-images.githubusercontent.com/91946706/178481456-28a1b829-abd3-4baf-a04f-40df2cabd69c.jpg)|![KakaoTalk_20220712_200941007_16](https://user-images.githubusercontent.com/91946706/178479778-05433131-bae3-4bf0-967d-a527232d8fd2.jpg)|![KakaoTalk_20220712_200941007_13](https://user-images.githubusercontent.com/91946706/178479735-8fa99655-40bf-43df-9acb-6455af946a55.jpg)|
 
