@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:raise_nubjook/module/nubjook.dart';
 import 'package:raise_nubjook/pages/first_page.dart';
 import 'package:raise_nubjook/pages/second_page.dart';
@@ -6,19 +7,8 @@ import 'package:raise_nubjook/pages/third_page.dart';
 
 import 'module/http.dart';
 
-
-void getNubJookInfo(String? userID) async {
-  var res = await http_post('get-info', {"ID": userID});
-  var result = res.data;
-  MYNUBJOOK = NubJook(
-      userID!,
-      result['_name'],
-      result['_full'],
-      result['_smart'],
-      result['_stress'],
-      result['_level']
-  );
-}
+String? USER_ID;
+NubJook? MYNUBJOOK;
 
 class WidgetApp extends StatefulWidget {
   String? userID;
@@ -26,7 +16,6 @@ class WidgetApp extends StatefulWidget {
 
   @override
   _WidgetApp createState() {
-    getNubJookInfo(this.userID);
     return _WidgetApp(this.userID);
   }
 }
@@ -36,6 +25,7 @@ class _WidgetApp extends State with SingleTickerProviderStateMixin {
 
   String? userID;
   _WidgetApp(String? userID) {
+    USER_ID = userID;
     this.userID = userID;
   }
 
@@ -54,13 +44,27 @@ class _WidgetApp extends State with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: TabBarView(
-          controller: controller,
-          children: const [
-            first_page(),
-            second_page(),
-            third_page(),
-          ],
+        body: FutureBuilder(
+          future: _future(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData == false){
+              return Container(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(),
+              );
+            }
+            else{
+              MYNUBJOOK = snapshot.data;
+              return TabBarView(
+                controller: controller,
+                children: [
+                  first_page(),
+                  second_page(),
+                  third_page(),
+                ],
+              );
+            }
+          },
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(15),
@@ -73,5 +77,19 @@ class _WidgetApp extends State with SingleTickerProviderStateMixin {
             controller: controller,
           ),
         ));
+  }
+
+  Future _future() async{
+    var res = await http_post('get-info', {"ID": USER_ID});
+    var result = res.data;
+    var myNubJook = NubJook(
+        userID!,
+        result['_name'],
+        result['_full'],
+        result['_smart'],
+        result['_stress'],
+        result['_level']
+    );
+    return myNubJook;
   }
 }

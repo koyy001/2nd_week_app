@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:raise_nubjook/module/nubjook.dart';
+import '../widget_app.dart';
 
 class second_page extends StatelessWidget {
   const second_page({Key? key}) : super(key: key);
@@ -79,8 +78,8 @@ class _DicePage extends State<DicePage> {
       p_imgsource='assets/m_happy.png';
       whoIsWin='넙죽이 패배';
       setState(() {
-        if (MYNUBJOOK.stress < 4) {
-          MYNUBJOOK.stress = MYNUBJOOK.stress + 1;
+        if (MYNUBJOOK!.stress < 4) {
+          MYNUBJOOK!.stress = MYNUBJOOK!.stress + 1;
         }
       });
     }
@@ -96,8 +95,8 @@ class _DicePage extends State<DicePage> {
       p_imgsource='assets/m_sad.png';
       whoIsWin='넙죽이 승리';
       setState(() {
-        if (MYNUBJOOK.stress > 0) {
-          MYNUBJOOK.stress = MYNUBJOOK.stress - 1;
+        if (MYNUBJOOK!.stress > 0) {
+          MYNUBJOOK!.stress = MYNUBJOOK!.stress - 1;
         }
       });
     }
@@ -300,8 +299,8 @@ class _RSPPage extends State<RSPPage> {
       p_imgsource='assets/m_sad.png';
       whoIsWin='넙죽이 승리';
       setState(() {
-        if (MYNUBJOOK.stress > 0) {
-          MYNUBJOOK.stress = MYNUBJOOK.stress - 1;
+        if (MYNUBJOOK!.stress > 0) {
+          MYNUBJOOK!.stress = MYNUBJOOK!.stress - 1;
         }
       });
     }
@@ -311,8 +310,8 @@ class _RSPPage extends State<RSPPage> {
       p_imgsource='assets/m_happy.png';
       whoIsWin='넙죽이 패배';
       setState(() {
-        if (MYNUBJOOK.stress < 4) {
-          MYNUBJOOK.stress = MYNUBJOOK.stress + 1;
+        if (MYNUBJOOK!.stress < 4) {
+          MYNUBJOOK!.stress = MYNUBJOOK!.stress + 1;
         }
       });
     }

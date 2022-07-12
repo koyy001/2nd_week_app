@@ -1,44 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:raise_nubjook/module/http.dart';
-import '../module/nubjook.dart';
+import '../widget_app.dart';
 
 
 
-class third_page extends StatelessWidget
-{
+class third_page extends StatefulWidget {
   const third_page({Key? key}) : super(key: key);
-  
+
+  @override
+  State<StatefulWidget> createState() => _third_page_state();
+}
+
+class _third_page_state extends State<StatefulWidget> {
   void SaveInfo() async {
     var response = {
-      "ID": MYNUBJOOK.userID,
-      "name": MYNUBJOOK.name,
-      "full": MYNUBJOOK.full,
-      "smart": MYNUBJOOK.smart,
-      "stress": MYNUBJOOK.stress,
-      "level": MYNUBJOOK.level,
+      "ID": MYNUBJOOK!.userID,
+      "name": MYNUBJOOK!.name,
+      "full": MYNUBJOOK!.full,
+      "smart": MYNUBJOOK!.smart,
+      "stress": MYNUBJOOK!.stress,
+      "level": MYNUBJOOK!.level,
     };
-    var result = await http_post('save-info', response);
-  }
-
-  void LogOut() {
-
+    await http_post('save-info', response);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body : Column(
-          children: <Widget> [
-            ElevatedButton(
-                onPressed: SaveInfo,
-                child: Text("저장하기"),
-            ),
-            ElevatedButton(
-                onPressed: LogOut,
-                child: Text("로그아웃")
-            ),
-          ],
-        ),
+      body : Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget> [
+          ElevatedButton(
+            onPressed: SaveInfo,
+            child: Text("SAVE"),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("LOG OUT")
+          ),
+        ],
+      ),
     );
   }
 }

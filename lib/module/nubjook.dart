@@ -14,12 +14,3 @@ class NubJook {
       this.level
   );
 }
-
-var MYNUBJOOK = NubJook(
-  '',
-  '',
-  0,
-  0,
-  0,
-  0,
-);

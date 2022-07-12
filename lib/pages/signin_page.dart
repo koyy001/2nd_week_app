@@ -45,6 +45,8 @@ class SignInPageState extends State<SignInPage> {
     context_for_login = context;
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget> [
           TextField(
             controller: registerID,

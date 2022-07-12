@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raise_nubjook/module/nubjook.dart';
+import '../widget_app.dart';
 
 class first_page extends StatelessWidget
 {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       padding: const EdgeInsets.only(top:20),  // 직사각형 위에 20만큼 padding
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 간격 띄워서, 중앙정렬
-        children: [const Text('넙죽이 키우기', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40))],
+        children: [Text('${MYNUBJOOK!.name} 키우기', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40))],
       ),
     );
 
@@ -57,10 +57,10 @@ class calculate_level extends StatefulWidget {
   State<calculate_level> createState() => _calculate_level();
 }
 
-int prev_final_level = MYNUBJOOK.level;
-int prev_full_level = MYNUBJOOK.full;
-int prev_smart_level = MYNUBJOOK.smart;
-int prev_stress_level = MYNUBJOOK.stress;
+int prev_final_level = MYNUBJOOK!.level;
+int prev_full_level = MYNUBJOOK!.full;
+int prev_smart_level = MYNUBJOOK!.smart;
+int prev_stress_level = MYNUBJOOK!.stress;
 int prev_sleep_level=0;
 int sleep_level=0;
 
@@ -76,13 +76,13 @@ class _calculate_level extends State<calculate_level>
   {
     setState(() // statefulWidget 에서 변경된 것을 매번 적용시켜주려면, setState라는 애를 실행시켜줘야함. --> 변경된 것 적용가능
     {
-      if(MYNUBJOOK.full<4) MYNUBJOOK.full = MYNUBJOOK.full + 1;
+      if(MYNUBJOOK!.full<4) MYNUBJOOK!.full = MYNUBJOOK!.full + 1;
     });
     Future.delayed(const Duration(seconds: 1), ()
     {
       setState(()
       {
-        prev_full_level=MYNUBJOOK.full;
+        prev_full_level=MYNUBJOOK!.full;
       });
     });
   }
@@ -91,15 +91,15 @@ class _calculate_level extends State<calculate_level>
   {
     setState(() // statefulWidget 에서 변경된 것을 매번 적용시켜주려면, setState라는 애를 실행시켜줘야함. --> 변경된 것 적용가능
     {
-      if(MYNUBJOOK.smart<4) MYNUBJOOK.smart = MYNUBJOOK.smart + 1;
+      if(MYNUBJOOK!.smart<4) MYNUBJOOK!.smart = MYNUBJOOK!.smart + 1;
       //stress_level+=2;
-      MYNUBJOOK.stress = MYNUBJOOK.stress + 1;
+      MYNUBJOOK!.stress = MYNUBJOOK!.stress + 1;
     });
     Future.delayed(const Duration(seconds: 1), ()
     {
       setState(()
       {
-        prev_smart_level=MYNUBJOOK.smart;
+        prev_smart_level=MYNUBJOOK!.smart;
       });
     });
   }
@@ -115,10 +115,10 @@ class _calculate_level extends State<calculate_level>
     {
       setState(()
       {
-        if (MYNUBJOOK.stress>0) MYNUBJOOK.stress = MYNUBJOOK.stress - 1;
-        if (MYNUBJOOK.full>0) MYNUBJOOK.full = MYNUBJOOK.full - 1;
-        prev_stress_level=MYNUBJOOK.stress;
-        prev_full_level=MYNUBJOOK.full;
+        if (MYNUBJOOK!.stress>0) MYNUBJOOK!.stress = MYNUBJOOK!.stress - 1;
+        if (MYNUBJOOK!.full>0) MYNUBJOOK!.full = MYNUBJOOK!.full - 1;
+        prev_stress_level=MYNUBJOOK!.stress;
+        prev_full_level=MYNUBJOOK!.full;
       });
     });
     Future.delayed(const Duration(seconds: 4), ()
@@ -134,14 +134,14 @@ class _calculate_level extends State<calculate_level>
   {
     setState(() // statefulWidget 에서 변경된 것을 매번 적용시켜주려면, setState라는 애를 실행시켜줘야함. --> 변경된 것 적용가능
     {
-      MYNUBJOOK.level = MYNUBJOOK.level + 1;
-      if (MYNUBJOOK.level<3)
+      MYNUBJOOK!.level = MYNUBJOOK!.level + 1;
+      if (MYNUBJOOK!.level<3)
         {
-          MYNUBJOOK.full=0;
+          MYNUBJOOK!.full=0;
           prev_full_level=0;
-          MYNUBJOOK.smart=0;
+          MYNUBJOOK!.smart=0;
           prev_smart_level=0;
-          MYNUBJOOK.stress=0;
+          MYNUBJOOK!.stress=0;
           prev_stress_level=0;
         }
       else
@@ -149,12 +149,12 @@ class _calculate_level extends State<calculate_level>
           imgsource = 'assets/2_graduate.png';
         }
     });
-    if (MYNUBJOOK.level<3) {
+    if (MYNUBJOOK!.level<3) {
       Future.delayed(const Duration(seconds: 1), ()
       {
         setState(()
         {
-          prev_final_level=MYNUBJOOK.level;
+          prev_final_level=MYNUBJOOK!.level;
         });
       });
     } else {
@@ -162,7 +162,7 @@ class _calculate_level extends State<calculate_level>
       {
         setState(()
         {
-          prev_final_level=MYNUBJOOK.level;
+          prev_final_level=MYNUBJOOK!.level;
         });
       });
     }
@@ -171,96 +171,96 @@ class _calculate_level extends State<calculate_level>
 
   @override
   Widget build(BuildContext context) {
-    if((MYNUBJOOK.full>=4)&&(MYNUBJOOK.smart>=4)&&(MYNUBJOOK.stress<4)) _Lv_plus();
-    if (MYNUBJOOK.level==0)
+    if((MYNUBJOOK!.full>=4)&&(MYNUBJOOK!.smart>=4)&&(MYNUBJOOK!.stress<4)) _Lv_plus();
+    if (MYNUBJOOK!.level==0)
     {
-      if((MYNUBJOOK.full==0)&&(MYNUBJOOK.stress==0)&&(sleep_level==0)&&(MYNUBJOOK.smart==0)) imgsource = 'assets/0_start.gif';
-      else if(MYNUBJOOK.stress>=4) imgsource = 'assets/0_stress.png';
-      else if(prev_full_level!=MYNUBJOOK.full) imgsource = 'assets/0_full.png';
+      if((MYNUBJOOK!.full==0)&&(MYNUBJOOK!.stress==0)&&(sleep_level==0)&&(MYNUBJOOK!.smart==0)) imgsource = 'assets/0_start.gif';
+      else if(MYNUBJOOK!.stress>=4) imgsource = 'assets/0_stress.png';
+      else if(prev_full_level!=MYNUBJOOK!.full) imgsource = 'assets/0_full.png';
       else if(prev_sleep_level!=sleep_level) imgsource = 'assets/0_sleep.gif';
-      else if(prev_smart_level!=MYNUBJOOK.smart) imgsource = 'assets/0_study.png';
+      else if(prev_smart_level!=MYNUBJOOK!.smart) imgsource = 'assets/0_study.png';
       //else if(MYNUBJOOK.full<=0) imgsource = 'assets/0_hungry.png';
       else imgsource = 'assets/0_default.png';
     }
-    else if (MYNUBJOOK.level==1)
+    else if (MYNUBJOOK!.level==1)
     {
-      if(prev_final_level!=MYNUBJOOK.level) imgsource = 'assets/1_start.gif';
-      else if(MYNUBJOOK.stress>=4) imgsource = 'assets/1_stress.png';
-      else if(prev_full_level!=MYNUBJOOK.full) imgsource = 'assets/1_full.png';
+      if(prev_final_level!=MYNUBJOOK!.level) imgsource = 'assets/1_start.gif';
+      else if(MYNUBJOOK!.stress>=4) imgsource = 'assets/1_stress.png';
+      else if(prev_full_level!=MYNUBJOOK!.full) imgsource = 'assets/1_full.png';
       else if(prev_sleep_level!=sleep_level) imgsource = 'assets/1_sleep.gif';
-      else if(prev_smart_level!=MYNUBJOOK.smart) imgsource = 'assets/1_study.png';
+      else if(prev_smart_level!=MYNUBJOOK!.smart) imgsource = 'assets/1_study.png';
       //else if(MYNUBJOOK.full<=0) imgsource = 'assets/1_hungry.png';
       else imgsource = 'assets/1_default.png';
     }
-    else if (MYNUBJOOK.level==2)
+    else if (MYNUBJOOK!.level==2)
     {
-      if(prev_final_level!=MYNUBJOOK.level) imgsource = 'assets/2_start.gif';
-      else if(MYNUBJOOK.stress>=4) imgsource = 'assets/2_stress.png';
-      else if(prev_full_level!=MYNUBJOOK.full) imgsource = 'assets/2_full.png';
+      if(prev_final_level!=MYNUBJOOK!.level) imgsource = 'assets/2_start.gif';
+      else if(MYNUBJOOK!.stress>=4) imgsource = 'assets/2_stress.png';
+      else if(prev_full_level!=MYNUBJOOK!.full) imgsource = 'assets/2_full.png';
       else if(prev_sleep_level!=sleep_level) imgsource = 'assets/2_sleep.gif';
-      else if(prev_smart_level!=MYNUBJOOK.smart) imgsource = 'assets/2_study.png';
+      else if(prev_smart_level!=MYNUBJOOK!.smart) imgsource = 'assets/2_study.png';
       //else if(MYNUBJOOK.full<=0) imgsource = 'assets/2_hungry.png';
       else imgsource = 'assets/2_default.png';
     }
 
-    if (MYNUBJOOK.full==0)
+    if (MYNUBJOOK!.full==0)
       imgsource_full_bar='assets/bar_0.png';
-    else if (MYNUBJOOK.full==1)
+    else if (MYNUBJOOK!.full==1)
       imgsource_full_bar='assets/bar_1.png';
-    else if (MYNUBJOOK.full==2)
+    else if (MYNUBJOOK!.full==2)
       imgsource_full_bar='assets/bar_2.png';
-    else if (MYNUBJOOK.full==3)
+    else if (MYNUBJOOK!.full==3)
       imgsource_full_bar='assets/bar_3.png';
-    else if (MYNUBJOOK.full>=4)
+    else if (MYNUBJOOK!.full>=4)
       imgsource_full_bar='assets/bar_4.png';
 
 
-    if (MYNUBJOOK.smart==0)
+    if (MYNUBJOOK!.smart==0)
       imgsource_smart_bar='assets/bar_0.png';
-    else if (MYNUBJOOK.smart==1)
+    else if (MYNUBJOOK!.smart==1)
       imgsource_smart_bar='assets/bar_1.png';
-    else if (MYNUBJOOK.smart==2)
+    else if (MYNUBJOOK!.smart==2)
       imgsource_smart_bar='assets/bar_2.png';
-    else if (MYNUBJOOK.smart==3)
+    else if (MYNUBJOOK!.smart==3)
       imgsource_smart_bar='assets/bar_3.png';
-    else if (MYNUBJOOK.smart>=4)
+    else if (MYNUBJOOK!.smart>=4)
       imgsource_smart_bar='assets/bar_4.png';
 
 
-    if (MYNUBJOOK.stress==0)
+    if (MYNUBJOOK!.stress==0)
       imgsource_stress_bar='assets/bar_0.png';
-    else if (MYNUBJOOK.stress==1)
+    else if (MYNUBJOOK!.stress==1)
       imgsource_stress_bar='assets/red_bar_1.png';
-    else if (MYNUBJOOK.stress==2)
+    else if (MYNUBJOOK!.stress==2)
       imgsource_stress_bar='assets/red_bar_2.png';
-    else if (MYNUBJOOK.stress==3)
+    else if (MYNUBJOOK!.stress==3)
       imgsource_stress_bar='assets/red_bar_3.png';
-    else if (MYNUBJOOK.stress>=4)
+    else if (MYNUBJOOK!.stress>=4)
       imgsource_stress_bar='assets/red_bar_4.png';
 
 
-    if (MYNUBJOOK.level==0)
+    if (MYNUBJOOK!.level==0)
       imgsource_final_bar='assets/level_bar_1.png';
-    else if (MYNUBJOOK.level==1)
+    else if (MYNUBJOOK!.level==1)
       imgsource_final_bar='assets/level_bar_2.png';
-    else if (MYNUBJOOK.level==2)
+    else if (MYNUBJOOK!.level==2)
       imgsource_final_bar='assets/level_bar_3.png';
-    else if (MYNUBJOOK.level>=3)
+    else if (MYNUBJOOK!.level>=3)
       imgsource_final_bar='assets/level_bar_4.gif';
 
 
-    if (MYNUBJOOK.stress>=4)
+    if (MYNUBJOOK!.stress>=4)
     {
       Future.delayed(const Duration(seconds: 4), ()
       {
         setState(()
         {
-          MYNUBJOOK.level = 0;
-          MYNUBJOOK.full=0;
+          MYNUBJOOK!.level = 0;
+          MYNUBJOOK!.full=0;
           prev_full_level=0;
-          MYNUBJOOK.smart=0;
+          MYNUBJOOK!.smart=0;
           prev_smart_level=0;
-          MYNUBJOOK.stress=0;
+          MYNUBJOOK!.stress=0;
           prev_stress_level=0;
         });
       });
@@ -323,12 +323,12 @@ class _calculate_level extends State<calculate_level>
       {
         setState(()
         {
-          MYNUBJOOK.level = 0;
-          MYNUBJOOK.full=0;
+          MYNUBJOOK!.level = 0;
+          MYNUBJOOK!.full=0;
           prev_full_level=0;
-          MYNUBJOOK.smart=0;
+          MYNUBJOOK!.smart=0;
           prev_smart_level=0;
-          MYNUBJOOK.stress=0;
+          MYNUBJOOK!.stress=0;
           prev_stress_level=0;
         });
       });
@@ -409,7 +409,7 @@ class _calculate_level extends State<calculate_level>
                               child:Image.asset(imgsource_full_bar, width: 250, fit: BoxFit.cover),
                               //padding: EdgeInsets.only(bottom:5)
                             ),
-                            Text('${MYNUBJOOK.full*25}%',style: TextStyle(fontSize: 20))
+                            Text('${MYNUBJOOK!.full*25}%',style: TextStyle(fontSize: 20))
                           ],)
                       ],),
                       Row(children: [Row(
@@ -418,7 +418,7 @@ class _calculate_level extends State<calculate_level>
                             child:Image.asset(imgsource_smart_bar, width: 250, fit: BoxFit.cover),
                             //padding: EdgeInsets.only(bottom:5)
                           ),
-                          Text('${MYNUBJOOK.smart*25}%',style: TextStyle(fontSize: 20))
+                          Text('${MYNUBJOOK!.smart*25}%',style: TextStyle(fontSize: 20))
                         ],)
                       ],),
                       Row(children: [Row(
@@ -427,7 +427,7 @@ class _calculate_level extends State<calculate_level>
                             child:Image.asset(imgsource_stress_bar, width: 250, fit: BoxFit.cover),
                             //padding: EdgeInsets.only(bottom:5)
                           ),
-                          Text('${MYNUBJOOK.stress*25}%',style: TextStyle(fontSize: 20))
+                          Text('${MYNUBJOOK!.stress*25}%',style: TextStyle(fontSize: 20))
                         ],)
                       ],),
                       Row(children: [Row(
@@ -436,7 +436,7 @@ class _calculate_level extends State<calculate_level>
                             child:Image.asset(imgsource_final_bar, width: 250, fit: BoxFit.cover),
                             //padding: EdgeInsets.only(bottom:5)
                           ),
-                          Text('${MYNUBJOOK.level}',style: TextStyle(fontSize: 20))
+                          Text('${MYNUBJOOK!.level}',style: TextStyle(fontSize: 20))
                         ],)
                       ],)
                     ],)

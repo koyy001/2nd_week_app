@@ -39,6 +39,7 @@ class MakeNamePageState extends State<MakeNamePage> {
     context_for_login = context;
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget> [
           TextField(
             controller: _name,
