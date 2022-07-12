@@ -48,6 +48,7 @@ class SignInPageState extends State<SignInPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget> [
+          SizedBox(height: 100,),
           TextField(
             controller: registerID,
             decoration: const InputDecoration(

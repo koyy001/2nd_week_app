@@ -41,6 +41,7 @@ class MakeNamePageState extends State<MakeNamePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget> [
+          SizedBox(height: 100,),
           TextField(
             controller: _name,
             decoration: const InputDecoration(

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:math';
 import '../widget_app.dart';
 
@@ -29,8 +30,9 @@ class FirstRoute extends StatelessWidget {
     return Scaffold(
       body: Column(
           children: <Widget>[
+            SizedBox(height: 40),
             GameList,
-            SizedBox(height: 50),
+            SizedBox(height: 80),
             ElevatedButton(
               child: Text('주사위 게임', style: TextStyle(fontSize: 30)),
               onPressed: () {
@@ -153,7 +155,7 @@ class _DicePage extends State<DicePage> {
               Padding(padding: EdgeInsets.only(top: 50.0)),
               Row(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(right: 170)),
+                    Padding(padding: EdgeInsets.only(right: 150)),
                     ButtonTheme(
                       minWidth: 100,
                       height: 50,
@@ -167,7 +169,7 @@ class _DicePage extends State<DicePage> {
                             //myToast('넙죽이 : $leftDice , 주인 : $rightDice ');
                           }),
                     ),
-                    Padding(padding: EdgeInsets.only(right: 70)),
+                    Padding(padding: EdgeInsets.only(right: 60)),
                     ButtonTheme(
                       minWidth: 100,
                       height: 20,
@@ -225,7 +227,7 @@ class _DicePage extends State<DicePage> {
               Padding(padding: EdgeInsets.only(top: 50.0)),
               Row(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(right: 170)),
+                    Padding(padding: EdgeInsets.only(right: 150)),
                     ButtonTheme(
                       minWidth: 100,
                       height: 50,
@@ -236,10 +238,11 @@ class _DicePage extends State<DicePage> {
                               leftDice = Random().nextInt(6) + 1;
                               rightDice = Random().nextInt(6) + 1;
                             });
-                            //myToast('넙죽이 : $leftDice , 주인 : $rightDice ');
+                            if ( leftDice>rightDice) myToast('넙죽이 stress -1');
+                            else if ( leftDice<rightDice) myToast('넙죽이 stress +1');
                           }),
                     ),
-                    Padding(padding: EdgeInsets.only(right: 70)),
+                    Padding(padding: EdgeInsets.only(right: 50)),
                     ButtonTheme(
                       minWidth: 100,
                       height: 20,
@@ -265,13 +268,13 @@ class _DicePage extends State<DicePage> {
   }
 }
 
-// void myToast(String massage){
-//   Fluttertoast.showToast(msg: massage,
-//       backgroundColor: Colors.blue,
-//       toastLength: Toast.LENGTH_LONG,
-//       gravity: ToastGravity.BOTTOM
-//   );
-// }
+void myToast(String massage){
+  Fluttertoast.showToast(msg: massage,
+      backgroundColor: Colors.blue,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM
+  );
+}
 
 ////////////////////////////묵찌빠 페이지////////////////////////////
 class RSPPage extends StatefulWidget {
@@ -437,7 +440,7 @@ class _RSPPage extends State<RSPPage> {
               SizedBox(height: 40,),
               Row(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(right: 300)),
+                    Padding(padding: EdgeInsets.only(right: 260)),
                     ButtonTheme(
                       minWidth: 100,
                       height: 20,
@@ -551,6 +554,8 @@ class _RSPPage extends State<RSPPage> {
                                   else if (leftRSP==2) RSP_case=1; // 넙죽:찌 --> 넙죽승
                                   else if (leftRSP==3) RSP_case=3; // 넙죽:빠 --> 동점
                                 });
+                                if ( RSP_case==1) myToast('넙죽이 stress -1');
+                                else if ( RSP_case==2) myToast('넙죽이 stress +1');
                               },
                             ),
                           ],),
@@ -568,7 +573,7 @@ class _RSPPage extends State<RSPPage> {
               SizedBox(height: 40,),
               Row(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(right: 300)),
+                    Padding(padding: EdgeInsets.only(right: 260)),
                     ButtonTheme(
                       minWidth: 100,
                       height: 20,

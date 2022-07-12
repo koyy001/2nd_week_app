@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: ListView( // Column으로 하면 --> 높이 지정을 디바이스의 크기보다 크게 지정할시 화면잘림. 그러나 ListView는 안잘리고 scroll 가능
           children: [
+            SizedBox(height: 20,),
             titleSection,
             levelSection
           ],
@@ -251,19 +252,6 @@ class _calculate_level extends State<calculate_level>
 
     if (MYNUBJOOK!.stress>=4)
     {
-      Future.delayed(const Duration(seconds: 4), ()
-      {
-        setState(()
-        {
-          MYNUBJOOK!.level = 0;
-          MYNUBJOOK!.full=0;
-          prev_full_level=0;
-          MYNUBJOOK!.smart=0;
-          prev_smart_level=0;
-          MYNUBJOOK!.stress=0;
-          prev_stress_level=0;
-        });
-      });
       return Column(
         children: [
           Container(child: Image.asset(imgsource, fit: BoxFit.cover)),
@@ -274,10 +262,20 @@ class _calculate_level extends State<calculate_level>
             child: ElevatedButton(
                 child: Text('다시하기'),
                 onPressed: (){
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => first_page()));
-                  // Navigator.pop(context);
+                  setState(() // statefulWidget 에서 변경된 것을 매번 적용시켜주려면, setState라는 애를 실행시켜줘야함. --> 변경된 것 적용가능
+                  {
+                    MYNUBJOOK!.level = 0;
+                    MYNUBJOOK!.full=0;
+                    prev_full_level=0;
+                    MYNUBJOOK!.smart=0;
+                    prev_smart_level=0;
+                    MYNUBJOOK!.stress=0;
+                    prev_stress_level=0;
+                  });
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WidgetApp(USER_ID)));
+                  Navigator.pop(context);
                 }),
           ),
         ],
@@ -319,24 +317,34 @@ class _calculate_level extends State<calculate_level>
     // }
     else if (prev_final_level>=3)
     {
-      Future.delayed(const Duration(seconds: 4), ()
-      {
-        setState(()
-        {
-          MYNUBJOOK!.level = 0;
-          MYNUBJOOK!.full=0;
-          prev_full_level=0;
-          MYNUBJOOK!.smart=0;
-          prev_smart_level=0;
-          MYNUBJOOK!.stress=0;
-          prev_stress_level=0;
-        });
-      });
       return Column(
         children: [
           Text('당신이 키운 넙죽이가 카이스트에 입학하였습니다!'),
           //Container(child: Image.asset('assets/3_graduate.png',width: 100, fit: BoxFit.cover) ),
-          Container(child: Image.asset('assets/2_kaist.jpg', width: 350, fit: BoxFit.cover) )
+          Container(child: Image.asset('assets/2_kaist.jpg', width: 350, fit: BoxFit.cover)),
+          ButtonTheme(
+            minWidth: 100,
+            height: 20,
+            child: ElevatedButton(
+                child: Text('다시하기'),
+                onPressed: (){
+                  setState(() // statefulWidget 에서 변경된 것을 매번 적용시켜주려면, setState라는 애를 실행시켜줘야함. --> 변경된 것 적용가능
+                  {
+                    MYNUBJOOK!.level = 0;
+                    MYNUBJOOK!.full=0;
+                    prev_full_level=0;
+                    MYNUBJOOK!.smart=0;
+                    prev_smart_level=0;
+                    MYNUBJOOK!.stress=0;
+                    prev_stress_level=0;
+                  });
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WidgetApp(USER_ID)));
+                  Navigator.pop(context);
+                }
+              ),
+            ),
         ],
       );
     }
@@ -376,7 +384,7 @@ class _calculate_level extends State<calculate_level>
           Row(
             children: [
               Container(
-                  padding: const EdgeInsets.only(left: 20, top:20),
+                  padding: const EdgeInsets.only(left: 10, top:20),
                   child:
                   Column(
                     children: [
@@ -398,7 +406,7 @@ class _calculate_level extends State<calculate_level>
                     ],)
               ),
               Container(
-                  padding: const EdgeInsets.only(left: 20, top:15),
+                  padding: const EdgeInsets.only( top:15),
                   child:
                   Column(
                     children: [
@@ -406,7 +414,7 @@ class _calculate_level extends State<calculate_level>
                         Row(
                           children: [
                             Container(
-                              child:Image.asset(imgsource_full_bar, width: 250, fit: BoxFit.cover),
+                              child:Image.asset(imgsource_full_bar, width: 230, fit: BoxFit.cover),
                               //padding: EdgeInsets.only(bottom:5)
                             ),
                             Text('${MYNUBJOOK!.full*25}%',style: TextStyle(fontSize: 20))
@@ -415,7 +423,7 @@ class _calculate_level extends State<calculate_level>
                       Row(children: [Row(
                         children: [
                           Container(
-                            child:Image.asset(imgsource_smart_bar, width: 250, fit: BoxFit.cover),
+                            child:Image.asset(imgsource_smart_bar, width: 230, fit: BoxFit.cover),
                             //padding: EdgeInsets.only(bottom:5)
                           ),
                           Text('${MYNUBJOOK!.smart*25}%',style: TextStyle(fontSize: 20))
@@ -424,7 +432,7 @@ class _calculate_level extends State<calculate_level>
                       Row(children: [Row(
                         children: [
                           Container(
-                            child:Image.asset(imgsource_stress_bar, width: 250, fit: BoxFit.cover),
+                            child:Image.asset(imgsource_stress_bar, width: 230, fit: BoxFit.cover),
                             //padding: EdgeInsets.only(bottom:5)
                           ),
                           Text('${MYNUBJOOK!.stress*25}%',style: TextStyle(fontSize: 20))
@@ -433,7 +441,7 @@ class _calculate_level extends State<calculate_level>
                       Row(children: [Row(
                         children: [
                           Container(
-                            child:Image.asset(imgsource_final_bar, width: 250, fit: BoxFit.cover),
+                            child:Image.asset(imgsource_final_bar, width: 230, fit: BoxFit.cover),
                             //padding: EdgeInsets.only(bottom:5)
                           ),
                           Text('${MYNUBJOOK!.level}',style: TextStyle(fontSize: 20))

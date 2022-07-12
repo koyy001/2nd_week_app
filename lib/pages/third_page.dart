@@ -27,22 +27,33 @@ class _third_page_state extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body : Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget> [
-          ElevatedButton(
-            onPressed: SaveInfo,
-            child: Text("SAVE"),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("LOG OUT")
-          ),
-        ],
-      ),
+      body : Container(
+        child:
+          Row(
+            children: [
+              SizedBox(width: 130),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget> [
+                  ElevatedButton(
+                    onPressed: SaveInfo,
+                    child: Text("SAVE"),
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("LOG OUT")
+                  ),
+                ],
+              ),
+
+            ],
+          )
+
+      )
+
     );
   }
 }
